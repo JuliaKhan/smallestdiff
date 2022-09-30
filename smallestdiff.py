@@ -39,23 +39,23 @@ def smallest_diff(a, b):
         long_list = a
         short_list = b
     
-    candidates = set()     #sets ignore duplicates so len(candidates) <= len(short_list)
+    candidates = set()    #sets are unique, so it'll be shorter than short_list
 
-    for item in short_list: #whole list will be checked
+    for item in short_list:            #whole short_list will be checked
         previous = None
-        for subtractor in long_list: #maybe half list will be checked
+        for subtractor in long_list:   #maybe half long_list will be checked
             diff = abs(item - subtractor) 
-            if previous == None:    #first subtractor handling
+            if previous == None:       #first subtractor handling
                 previous = diff
                 continue
-            elif previous < diff:   #stop checking when diff starts growing
+            elif previous < diff:      #stop checking when diff starts growing
                 candidates.add(previous)
                 break
-            elif subtractor == long_list[-1]:   #edge case: always record final diff
+            elif subtractor == long_list[-1]:   #edge case: record final diff
                 candidates.add(diff)
-            previous = diff     #prepared previous for next loop
+            previous = diff            #prepares previous for next loop
                 
-    return min(candidates)  #returns min of candidates
+    return min(candidates)
     
 
 
